@@ -1,0 +1,16 @@
+{
+  "name": "the-actions",
+  "version": "0.1.0",
+  "description": "Refine the actions in TypeScript context",
+  "main": "dist/index.js",
+  "repository": "https://github.com/zccz14/the-actions.git",
+  "author": "zccz14 <zccz14@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.5"
+  }
+}
