@@ -6,6 +6,10 @@
   "repository": "https://github.com/zccz14/the-actions.git",
   "author": "zccz14 <zccz14@outlook.com>",
   "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "tsc",
     "prepare": "tsc"
