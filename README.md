@@ -18,7 +18,7 @@ Refine the actions in TypeScript context.
   - What's the point of using the `type` anywhere? No point at all!
   - Once specified, never to use anymore.
   - Or there could be a babel-plugin to generate `type`.
-- Non-invasive introducing
+- Non-exclusive introducing
   - `the-actions` doesn't reject to work with other-system actions if they do too.
 - More general usage
   - `the-actions` can be integrated into redux (reducer), redux-saga (take\*), react hooks (useReducer), and anything need to mark a type for channeling, which exceeds the react & redux ecosystem.
