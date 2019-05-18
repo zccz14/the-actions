@@ -2,14 +2,16 @@
 
 Refine the actions in TypeScript context.
 
-`the-actions` is good for:
-
 - Gain **type-safe** without extra pain, which includes:
   - Uniting actions together for narrowing the type later in 'reducer' or anywhere
   - Enforcing the `type` to be string literal.
 - **Simple** to understand, **easy** to use
-  - No magic. `createActionFactory` could be implemented in 4 lines of pretty-printed code.
+  - No magic. `ActionCreator` could be implemented in 4 lines of pretty-printed code.
   - ActionCreator-like API, easy to create an action.
+  - FSA is no longer important in TypeScript context.
+    - Firstly, `meta` and `error` have rarely usecases.
+    - And, TypeScript makes you trust that the `payload` is type-safe without checking `error`.
+    - It's better to **nest actions** rather than to mark `meta` and `error` besides `payload`.
 - **Reduce boilerplate code** without [the one-to-one mapping assumption](https://redux.js.org/faq/actions#is-there-always-a-one-to-one-mapping-between-reducers-and-actions)
   - Unlike some redux utilities, `the-actions` doesn't change the way to create a 'reducer'.
 - Use `type` no more than **ONCE**
@@ -24,17 +26,17 @@ Refine the actions in TypeScript context.
 ## Usage
 
 ```ts
-// create an action factory
-import { createActionFactory } from "the-actions";
-const sampleActionFactory = createActionFactory<{ text: string }>();
+// create an action creator
+import { ActionCreator } from "./index";
+const setText = ActionCreator<{ text: string }>();
 
 // create an action
-const sampleAction = sampleActionFactory({ text: "hello, world" });
+const setTextAction = setText({ text: "hello, world" });
 
 // usage in redux reducer
 const initState = { text: "" };
 const reducer = (state = initState, action: unknown) => {
-  if (sampleActionFactory.match(action)) {
+  if (setText.match(action)) {
     return { ...state, text: action.payload.text };
   }
   return state;
@@ -45,7 +47,7 @@ import { bindActionCreators, Dispatch } from "redux";
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
-      sampleActionFactory,
+      setText,
     },
     dispatch,
   );
@@ -53,9 +55,9 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
 // usage in redux-saga
 import { call, takeLatest } from "redux-saga/effects";
 function* saga() {
-  yield takeLatest(sampleActionFactory.match, sampleListener);
+  yield takeLatest(setText.match, sampleListener);
 }
-function* sampleListener(action: ReturnType<typeof sampleActionFactory>) {
+function* sampleListener(action: ReturnType<typeof setText>) {
   yield call(console.log, action.payload.text);
 }
 
@@ -68,7 +70,7 @@ const InputComponent = () => {
     <input
       value={state.text}
       onChange={(e: React.ChangeEvent<HtmlInputElement>) => {
-        dispatch(sampleActionFactory(e.target.value));
+        dispatch(setText(e.target.value));
       }}
     />
   );
