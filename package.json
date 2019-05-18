@@ -10,6 +10,15 @@
     "dist",
     "src"
   ],
+  "keywords": [
+    "typescript",
+    "typesafe",
+    "actions",
+    "redux",
+    "flux",
+    "react",
+    "redux-saga"
+  ],
   "scripts": {
     "build": "tsc",
     "prepare": "tsc"
