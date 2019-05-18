@@ -12,7 +12,7 @@ export const ActionCreator = <T = void>(type: any = Symbol()) =>
      * @param payload the payload of the created action
      */
     (payload: T) => ({
-      /** the type of action, NEVER TO READ IT */
+      /** the type of action, NEVER READ IT */
       type,
       /** the payload of the action */
       payload,
