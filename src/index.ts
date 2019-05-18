@@ -1,5 +1,5 @@
 /**
- * create action factory
+ * new Action Creator
  *
  * @param type the identifier of actions, defaults to a unique symbol
  * @returns an action factory with type predicate
@@ -7,7 +7,7 @@
 export const ActionCreator = <T = void>(type: any = Symbol()) =>
   Object.assign(
     /**
-     * action factory (creator)
+     * action creator
      * 
      * @param payload the payload of the created action
      */
@@ -19,7 +19,7 @@ export const ActionCreator = <T = void>(type: any = Symbol()) =>
     }),
     {
       /**
-       * Returns true if `a` is an action created by this action factory.
+       * Returns true if `a` is an action created by this action creator.
        * 
        * @param a anything treated as an action
        */
