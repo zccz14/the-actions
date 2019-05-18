@@ -90,7 +90,7 @@ It's almost what I want!
 
 The core mechanisms are the same except `the-actions` is not fully FSA-compliant. In fact, `the-actions` loaded `meta` and `error` off to be simple.
 
-By the way, it's amazing that `typescript-fsa` and `the-actions` takes the same word "match" to name the type predicate.
+By the way, it's a amazing coincidence that `typescript-fsa` and `the-actions` takes the same word "match" to name the type predicate.
 
 Another difference is that `the-actions` doesn't treat the "Async Action Creators" as first-class concept. In `the-actions`, "Async Action Creators" is a sample of "Action Creator Group", which is a composition of action creators.
 
