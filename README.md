@@ -76,3 +76,38 @@ const InputComponent = () => {
   );
 };
 ```
+
+## Compare with other action utilities
+
+Yes, there's many action utilities published. And some of them are designed for typescript.
+up to now, there're many in npm, includes `typesafe-actions`, `typescript-fsa`, `ts-action`, `typed-redux-actions`, `create-action-ts`, `redux-action-class`...
+
+Take the most typical for examples,
+
+### `typescript-fsa`
+
+It's almost what I want!
+
+The core mechanisms are the same except `the-actions` is not fully FSA-compliant. In fact, `the-actions` loaded `meta` and `error` off to be simple.
+
+By the way, it's amazing that `typescript-fsa` and `the-actions` takes the same word "match" to name the type predicate.
+
+Another difference is that `the-actions` doesn't treat the "Async Action Creators" as first-class concept. In `the-actions`, "Async Action Creators" is a sample of "Action Creator Group", which is a composition of action creators.
+
+Further more, when creating an action creator in `typescript-fsa`, you MUST pass a `type` for identify the action creator. It's no problem but lose the chance to entirely avoid specifying a unique string.
+
+### `typesafe-actions`
+
+The core mchanisms to be type-safe are really different. 
+
+The way of `typesafe-actions` is troublesome. 
+
+1. `type` MUST BE string literal (Ability Limited)
+  
+    It stopped writing prefix (namespace) for the action type.
+
+2. Actions SHOULD BE united first (Boilerplate Code)
+
+    That is, you, the app developper, should define the universal set of action for every reducer. And then, typescript helps narrowing the scope from the universal set.
+
+So, `typesafe-actions` paid too much for type-safe.
