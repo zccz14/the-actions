@@ -10,13 +10,13 @@ Refine the actions in TypeScript context.
 - **Simple** to understand, **easy** to use
   - No magic. `createActionFactory` could be implemented in 4 lines of pretty-printed code.
   - ActionCreator-like API, easy to create an action.
-- **Reduce boilerplate code** without losing the one-to-one assumption
+- **Reduce boilerplate code** without [the one-to-one mapping assumption](https://redux.js.org/faq/actions#is-there-always-a-one-to-one-mapping-between-reducers-and-actions)
   - Unlike some redux utilities, `the-actions` doesn't change the way to create a 'reducer'.
 - Use `type` no more than **ONCE**
   - What's the point of using the `type` anywhere? No point at all!
   - Once specified, never to use anymore.
   - Or there could be a babel-plugin to generate `type`.
-- Non-invasively introducing
+- Non-invasive introducing
   - `the-actions` doesn't reject to work with other-system actions if they do too.
 - More general usage
   - `the-actions` can be integrated into redux (reducer), redux-saga (take\*), react hooks (useReducer), and anything need to mark a type for channeling, which exceeds the react & redux ecosystem.
